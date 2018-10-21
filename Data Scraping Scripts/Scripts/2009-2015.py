@@ -12,7 +12,7 @@ from utils import get_response
 HOME_PAGE = 'https://www.google-melange.com'
 MAIN_PAGE = f'{HOME_PAGE}/archive/gsoc'
 PATH_TO_OUTPUT_FILE = os.path.join(
-    '..', '..', '..', 'Dataset', '2009-2015.json')
+    '..', '..', 'Dataset', '2009-2015.json')
 
 
 def get_year_with_link():
@@ -70,7 +70,7 @@ def get_org_projects_info(org_link):
 
     :param org_link: Valid link to the organisation's info page of a specific year
     :type org_link: str
-    :returns: A list of dictionaries of each projects containing title, descrition and link of project
+    :returns: A list of dictionaries of each project's title, descrition and link of project
     :rtype: list
     """
     response = get_response(org_link)
