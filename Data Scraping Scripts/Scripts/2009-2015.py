@@ -1,33 +1,18 @@
 import os
 import sys
 import json
-
 import requests
+
 from requests.exceptions import ConnectionError
 from bs4 import BeautifulSoup
+
+from utils import get_response
+
 
 HOME_PAGE = 'https://www.google-melange.com'
 MAIN_PAGE = f'{HOME_PAGE}/archive/gsoc'
 PATH_TO_OUTPUT_FILE = os.path.join(
     '..', '..', '..', 'Dataset', '2009-2015.json')
-
-
-def get_response(link):
-    """Make a GET request to the link
-
-    :param link: Valid HTTP/HTTPS link
-    :type link: str
-    :returns A response object
-    :rtype: requests.models.Response
-    :raises: ConnectionError: If there is some problem in connecting to the link
-    """
-    try:
-        response = requests.get(link)
-        return response
-    except ConnectionError as e:
-        print('Connection Error')
-        print(e)
-        sys.exit(1)
 
 
 def get_year_with_link():
@@ -110,6 +95,7 @@ def get_org_projects_info(org_link):
         print(f'Status Code: {response.status_code}')
         sys.exit(1)
 
+
 def main():
     final_dict = {}
     year_with_link = get_year_with_link()
@@ -124,6 +110,7 @@ def main():
 
     json_dict = json.dumps(final_dict)
     open(PATH_TO_OUTPUT_FILE, 'w').write(json_dict)
+
 
 if __name__ == '__main__':
     main()
