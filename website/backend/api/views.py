@@ -46,3 +46,26 @@ def overview_of_specific_year(request, year):
         context_data['total_projects_done'] = utils.total_projects_done_year(
             data_of_year)
         return Response(context_data, status=status.HTTP_200_OK)
+
+
+@api_view(['GET'])
+def gsoc_overview(request):
+    """
+    Get the overview of the GSoC
+    from the year 2009
+    """
+    context_data = {}
+    total_orgs = 0
+    total_projects = 0
+    for year in DATA.keys():
+        no_of_orgs = utils.total_orgs_participated_year(DATA[year])
+        no_of_projects = utils.total_projects_done_year(DATA[year])
+        total_orgs += no_of_orgs
+        total_projects += no_of_projects
+        context_data[year] = {
+            'no_of_orgs': no_of_orgs,
+            'no_of_projects': no_of_projects
+        }
+    context_data['total_orgs'] = total_orgs
+    context_data['total_projects'] = total_projects
+    return Response(context_data, status=status.HTTP_200_OK)
