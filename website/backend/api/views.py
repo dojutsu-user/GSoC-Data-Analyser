@@ -69,3 +69,23 @@ def gsoc_overview(request):
     context_data['total_orgs'] = total_orgs
     context_data['total_projects'] = total_projects
     return Response(context_data, status=status.HTTP_200_OK)
+
+
+@api_view(['GET'])
+def org_overview(request, slug):
+    """
+    Returns the overview of a organisation
+    """
+    org_name = utils.get_org_name_from_slug(slug, DATA)
+    if not org_name:
+        return Response({'error': 'No Organisation Found.'}, status=status.HTTP_400_BAD_REQUEST)
+    years_of_participation = utils.get_years_of_participation(org_name, DATA)
+    projects_each_year, total_projects = utils.get_no_of_projects_each_year(
+        org_name, DATA)
+    context_data = {
+        'org_name': org_name,
+        'slug': slug,
+        'years_of_participation': years_of_participation,
+        'projects_each_year': projects_each_year,
+    }
+    return Response(context_data, status=status.HTTP_200_OK)
