@@ -1,0 +1,30 @@
+.row {
+  margin: 1em auto;
+}
+
+.image img {
+  width: 300px;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+
+.form {
+  width: 80%;
+  margin: auto;
+}
+
+@media (max-width: 512px) {
+  .form {
+    margin: 2em auto;
+  }
+}
+
+@media (max-width: 440px) {
+  .image img {
+    width: 200px;
+  }
+  .row {
+    margin: 2em 5px;
+  }
+}

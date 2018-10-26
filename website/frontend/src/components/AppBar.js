@@ -8,14 +8,10 @@ import Typography from "@material-ui/core/Typography";
 
 const styles = {
   root: {
-    flexGrow: 1,
+    flexGrow: 1
   },
   grow: {
     flexGrow: 1
-  },
-  menuButton: {
-    marginLeft: -12,
-    marginRight: 20
   }
 };
 
@@ -28,8 +24,8 @@ const appbar = props => {
           <Typography variant="h6" color="inherit" className={classes.grow}>
             GSoC Data Analyzer
           </Typography>
+          <Button color="inherit">Home</Button>
           <Button color="inherit">GSoC Overview</Button>
-          <Button color="inherit">About</Button>
         </Toolbar>
       </AppBar>
     </div>
