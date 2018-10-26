@@ -22,10 +22,10 @@ const appbar = props => {
       <AppBar position="static" color="default">
         <Toolbar>
           <Typography variant="h6" color="inherit" className={classes.grow}>
-            GSoC Data Analyzer
+            <span className="logo">GSoC Data Analyzer</span>
           </Typography>
-          <Button color="inherit">Home</Button>
           <Button color="inherit">GSoC Overview</Button>
+          <Button color="inherit">About</Button>
         </Toolbar>
       </AppBar>
     </div>

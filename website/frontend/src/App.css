@@ -1,3 +1,8 @@
+.logo {
+  display: block;
+  cursor: pointer;
+}
+
 .row {
   margin: 1em auto;
 }
