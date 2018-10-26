@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
+import { withRouter } from "react-router-dom";
 
 const styles = theme => ({
   container: {
@@ -25,10 +26,24 @@ class SearchForm extends Component {
     });
   };
 
+  submitHandler = event => {
+    event.preventDefault();
+    const queryString = "?q=" + encodeURIComponent(this.state.query);
+    this.props.history.push({
+      pathname: "/search",
+      search: queryString
+    });
+  };
+
   render() {
     const { classes } = this.props;
     return (
-      <form className={classes.container} noValidate autoComplete="off">
+      <form
+        onSubmit={this.submitHandler}
+        className={classes.container}
+        noValidate
+        autoComplete="off"
+      >
         <TextField
           id="outlined-full-width"
           label="Search Your Organisation"
@@ -59,4 +74,4 @@ SearchForm.propTypes = {
   classes: PropTypes.object.isRequired
 };
 
-export default withStyles(styles)(SearchForm);
+export default withRouter(withStyles(styles)(SearchForm));

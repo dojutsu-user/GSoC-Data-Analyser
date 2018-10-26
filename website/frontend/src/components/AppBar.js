@@ -5,6 +5,7 @@ import { withStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
+import { NavLink } from "react-router-dom";
 
 const styles = {
   root: {
@@ -22,7 +23,9 @@ const appbar = props => {
       <AppBar position="static" color="default">
         <Toolbar>
           <Typography variant="h6" color="inherit" className={classes.grow}>
-            <span className="logo">GSoC Data Analyzer</span>
+            <NavLink to="/" style={{ textDecoration: "none", color: "black" }}>
+              <span className="logo">GSoC Data Analyzer</span>
+            </NavLink>
           </Typography>
           <Button color="inherit">GSoC Overview</Button>
           <Button color="inherit">About</Button>

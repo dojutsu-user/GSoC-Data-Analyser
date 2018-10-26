@@ -1,12 +1,10 @@
 import React from "react";
-import AppBar from "../components/AppBar";
-import GSoCLogo from "../components/gsocImage";
+import GSoCLogo from "./gsocImage";
 import SearchForm from "../containers/SearchForm";
 
-const layout = props => {
+const home = props => {
   return (
     <React.Fragment>
-      <AppBar />
       <div className="row">
         <div className="image">
           <GSoCLogo />
@@ -19,4 +17,4 @@ const layout = props => {
   );
 };
 
-export default layout;
+export default home;

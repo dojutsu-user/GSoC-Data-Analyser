@@ -19,6 +19,18 @@
   margin: auto;
 }
 
+.container {
+  width: 90%;
+  margin: 30px auto;
+  position: relative;
+  text-align: center;
+}
+
+.block {
+  display: inline-block;
+  margin: 10px
+}
+
 @media (max-width: 512px) {
   .form {
     margin: 2em auto;
