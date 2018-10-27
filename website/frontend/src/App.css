@@ -48,7 +48,39 @@
 .full-summary {
   text-align: center;
   font-size: 25px;
-  font-family: 'Oswald', sans-serif;
+  font-family: "Oswald", sans-serif;
+}
+
+.title {
+  font-family: "Oswald", sans-serif;
+}
+
+.disc-container {
+  font-size: 20px;
+  width: 50%;
+  margin: 30px auto;
+  position: relative;
+  text-align: center;
+}
+
+.disc-container p {
+  text-align: justify;
+  font-size: 20px;
+  line-height: 30px;
+}
+
+.made-with-love {
+  position: relative;
+  width: 100%;
+  bottom: 0;
+  margin: 10px 0;
+  text-align: center;
+  font-size: 17px;
+}
+
+.made-with-love a {
+  text-decoration: underline;
+  color: black;
 }
 
 @media (max-width: 596px) {

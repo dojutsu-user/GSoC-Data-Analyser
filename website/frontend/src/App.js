@@ -5,6 +5,7 @@ import AppBar from "./components/AppBar";
 import SearchResults from "./containers/SearchResults";
 import OrgInfoPage from "./containers/OrgInfo";
 import GsocOverview from "./containers/GsocOverview";
+import About from "./components/About";
 import "./App.css";
 
 class App extends Component {
@@ -13,6 +14,7 @@ class App extends Component {
       <div className="App">
         <AppBar />
         <Switch>
+          <Route exact path="/about" component={About} />
           <Route exact path="/overview/gsoc" component={GsocOverview} />
           <Route exact path="/org/:slug" component={OrgInfoPage} />
           <Route exact path="/search" component={SearchResults} />

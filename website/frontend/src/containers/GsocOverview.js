@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import AxiosInstance from "../AxiosInstance";
-import ErrorSnackBar from "./SnackBar";
 import { Line, Radar } from "react-chartjs-2";
 
 class GsocOverview extends Component {
@@ -101,24 +100,26 @@ class GsocOverview extends Component {
           }
         ]
       };
-      charts = (
-        <div>
-          <Line data={dataForOrgs} />
-          <div style={{ height: "30px" }}> </div>
-          <div className="full-summary">
-            Total Organizations: {this.state.data.total_orgs}
+      if (!this.state.error) {
+        charts = (
+          <div>
+            <Line data={dataForOrgs} />
+            <div style={{ height: "30px" }}> </div>
+            <div className="full-summary">
+              Total Organizations: {this.state.data.total_orgs}
+            </div>
+            <div style={{ height: "50px" }}> </div>
+            <Line data={dataForProjects} />
+            <div style={{ height: "30px" }}> </div>
+            <div className="full-summary">
+              Total Projects: {this.state.data.total_projects}
+            </div>
+            <div style={{ height: "60px" }}> </div>
+            <Radar data={datasetsForRadarMap} />
+            <div style={{ height: "60px" }}> </div>
           </div>
-          <div style={{ height: "50px" }}> </div>
-          <Line data={dataForProjects} />
-          <div style={{ height: "30px" }}> </div>
-          <div className="full-summary">
-            Total Projects: {this.state.data.total_projects}
-          </div>
-          <div style={{ height: "60px" }}> </div>
-          <Radar data={datasetsForRadarMap} />
-          <div style={{ height: "60px" }}> </div>
-        </div>
-      );
+        );
+      }
     }
     return <div className="graph-container">{charts}</div>;
   }
