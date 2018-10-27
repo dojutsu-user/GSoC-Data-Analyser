@@ -27,7 +27,12 @@ const appbar = props => {
               <span className="logo">GSoC Data Analyzer</span>
             </NavLink>
           </Typography>
-          <Button color="inherit">GSoC Overview</Button>
+          <NavLink
+            to="/overview/gsoc"
+            style={{ textDecoration: "none", color: "black" }}
+          >
+            <Button color="inherit">GSoC Overview</Button>
+          </NavLink>
           <Button color="inherit">About</Button>
         </Toolbar>
       </AppBar>
