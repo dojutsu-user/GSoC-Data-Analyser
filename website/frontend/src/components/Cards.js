@@ -9,6 +9,7 @@ import CardMedia from "@material-ui/core/CardMedia";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import Logo from "../assets/logo.png";
+import { Link } from "react-router-dom";
 
 const styles = {
   card: {
@@ -31,14 +32,16 @@ function MediaCard(props) {
         />
         <CardContent>
           <Typography gutterBottom variant="h5" component="h2">
-            52° North Initiative for Geospatial Open Source Software GmbH
+            {props.name}
           </Typography>
         </CardContent>
       </CardActionArea>
       <CardActions>
-      <Button variant="outlined" color="primary" className={classes.button}>
-        Primary
-      </Button>
+        <Link to={`/org/${props.slug}`} style={{textDecoration: "none"}} >
+          <Button variant="outlined" color="primary" className={classes.button}>
+            Read More
+          </Button>
+        </Link>
       </CardActions>
     </Card>
   );

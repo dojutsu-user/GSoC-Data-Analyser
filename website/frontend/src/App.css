@@ -28,7 +28,20 @@
 
 .block {
   display: inline-block;
-  margin: 10px
+  margin: 10px;
+}
+
+.error-msg {
+  display: block;
+  margin: 0 auto;
+  text-align: center;
+  width: 50%;
+}
+
+@media (max-width: 596px) {
+  .error-msg {
+    width:90%!important;
+  }
 }
 
 @media (max-width: 512px) {
