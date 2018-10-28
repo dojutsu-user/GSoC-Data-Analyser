@@ -3,11 +3,13 @@ import Cards from "../components/Cards";
 import SearchForm from "../containers/SearchForm";
 import AxiosInstance from "../AxiosInstance";
 import ErrorSnackBar from "./SnackBar";
+import Spinner from "../components/Spinner";
 
 class SearchResults extends Component {
   state = {
     results: null,
-    error: null
+    error: null,
+    loading: true
   };
 
   fetchResults() {
@@ -15,10 +17,14 @@ class SearchResults extends Component {
       `/search${decodeURIComponent(this.props.location.search)}`
     )
       .then(response => {
-        this.setState({ results: response.data, error: null });
+        this.setState({ results: response.data, error: null, loading: false });
       })
       .catch(error => {
-        this.setState({ results: null, error: error.response.data.error });
+        this.setState({
+          results: null,
+          error: error.response.data.error,
+          loading: false
+        });
       });
   }
 
@@ -49,6 +55,9 @@ class SearchResults extends Component {
           <ErrorSnackBar errMsg={this.state.error} />
         </div>
       );
+    }
+    if (this.state.loading) {
+      cardsArray = <Spinner />
     }
     return (
       <div className="container">

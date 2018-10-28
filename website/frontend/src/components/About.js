@@ -24,12 +24,15 @@ const about = () => {
           href="https://github.com/dojutsu-user/GSoC-Data-Analyser"
           style={{ color: "black" }}
         >
-          <i class="fab fa-github fa-3x" />
+          <i className="fab fa-github fa-3x" />
         </a>
       </div>
-      <p class="made-with-love">
-        Made With ❤️ By{" "}
-        <a href="https://github.com/dojutsu-user">Vaibhav Gupta</a>
+      <p className="made-with-love">
+        Made With{" "}
+        <span role="img" aria-label="heart">
+          ❤️
+        </span>{" "}
+        By <a href="https://github.com/dojutsu-user">Vaibhav Gupta</a>
       </p>
     </div>
   );

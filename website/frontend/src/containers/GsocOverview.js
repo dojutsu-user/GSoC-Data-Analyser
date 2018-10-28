@@ -1,24 +1,39 @@
 import React, { Component } from "react";
 import AxiosInstance from "../AxiosInstance";
 import { Line, Radar } from "react-chartjs-2";
+import Spinner from "../components/Spinner";
 
 class GsocOverview extends Component {
   state = {
     data: null,
     error: false,
-    hasResults: false
+    hasResults: false,
+    loading: true
   };
   componentDidMount() {
     AxiosInstance.get("/overview/gsoc").then(
       response =>
-        this.setState({ data: response.data, error: false, hasResults: true }),
+        this.setState({
+          data: response.data,
+          error: false,
+          hasResults: true,
+          loading: false
+        }),
       error => {
-        this.setState({ data: null, error: true, hasResults: false });
+        this.setState({
+          data: null,
+          error: true,
+          hasResults: false,
+          loading: false
+        });
       }
     );
   }
   render() {
     let charts = null;
+    if (this.state.loading) {
+      charts = <Spinner />;
+    }
     if (this.state.hasResults) {
       const labels = Object.keys(this.state.data).filter(year => {
         return !isNaN(year);

@@ -2,23 +2,31 @@ import React, { Component } from "react";
 import AxiosInstance from "../AxiosInstance";
 import ErrorSnackBar from "./SnackBar";
 import { Bar } from "react-chartjs-2";
+import Spinner from "../components/Spinner";
 
 class OrgInfo extends Component {
   state = {
     info: null,
     error: false,
-    hasResults: false
+    hasResults: false,
+    loading: true
   };
   componentDidMount() {
     AxiosInstance.get(`/org/${this.props.match.params.slug}`).then(
       response => {
-        this.setState({ info: response.data, error: false, hasResults: true });
+        this.setState({
+          info: response.data,
+          error: false,
+          hasResults: true,
+          loading: false
+        });
       },
       error => {
         this.setState({
           info: null,
           error: true,
-          hasResults: false
+          hasResults: false,
+          loading: false
         });
       }
     );
@@ -63,6 +71,9 @@ class OrgInfo extends Component {
           />
         );
       }
+    }
+    if (this.state.loading) {
+      result = <Spinner />
     }
     return <div className="graph-container">{result}</div>;
   }
